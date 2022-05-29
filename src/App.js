@@ -2,41 +2,41 @@ import React from 'react'
 import axios from 'axios'
 
 import './App.css'
+import { useState, useEffect } from 'react'
 
-class App extends React.Component {
-  state = {
-    advice: '',
-  }
+const App = () => {
+  const [advice, setAdvice] = useState('')
 
-  componentDidMount() {
-    this.fetchAdvice()
-  }
-
-  fetchAdvice = () => {
+  const fetchAdvice = () => {
     axios
       .get('https://api.adviceslip.com/advice')
       .then((response) => {
         const { advice } = response.data.slip
 
-        this.setState({ advice })
+        setAdvice(advice)
       })
       .catch((error) => {
         console.log(error)
       })
   }
 
-  render() {
-    return (
-      <div className="app">
-        <div className="card">
-          <h1 className="heading">{this.state.advice}</h1>
-          <button className="button" onClick={this.fetchAdvice}>
-            <span>ADVICE ME!</span>
-          </button>
-        </div>
+  useEffect(() => {
+    fetchAdvice()
+  }, [])
+
+  return (
+    <div className="app">
+      <div className="card">
+        <h1 className="heading">{advice}</h1>
+        <h4 style={{ color: 'gray' }}>
+          Slow API you might have to click a couple of times :(
+        </h4>
+        <button type="sbmit" className="button" onClick={() => fetchAdvice()}>
+          <span>ADVICE ME!</span>
+        </button>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
