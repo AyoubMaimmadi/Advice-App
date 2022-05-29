@@ -31,7 +31,7 @@ const App = () => {
         <h4 style={{ color: 'gray' }}>
           Slow API you might have to click a couple of times :(
         </h4>
-        <button type="sbmit" className="button" onClick={() => fetchAdvice()}>
+        <button type="button" className="button" onClick={() => fetchAdvice()}>
           <span>ADVICE ME!</span>
         </button>
       </div>
