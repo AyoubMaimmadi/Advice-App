@@ -29,7 +29,7 @@ const App = () => {
       <div className="card">
         <h1 className="heading">{advice}</h1>
         <h4 style={{ color: 'gray' }}>
-          Slow API you might have to click a couple of times :(
+          You might have to click a couple of times :(
         </h4>
         <button type="button" className="button" onClick={() => fetchAdvice()}>
           <span>ADVICE ME!</span>
